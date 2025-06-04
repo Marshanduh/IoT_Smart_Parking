@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+}
+
+.header {
+  background-color: #87ceeb;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.parking-lot {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 20px 0;
+}
+
+.parking-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.slot {
+  width: 80px;
+  height: 80px;
+  background-color: #add8e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 30px;
+}
+
+.slot-id {
+  position: absolute;
+  bottom: 5px;
+  font-size: 12px;
+}
+
+.available {
+  background-color: #d3f8d3;
+}
+
+.unavailable {
+  background-color: #f8d3d3;
+}
+
+.entrance {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.entrance-icon {
+  font-size: 40px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.slot-button, .feedback-button {
+  background-color: #87ceeb;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slot-button:hover, .feedback-button:hover {
+  background-color: #68a7d8;
 }
