@@ -1,5 +1,6 @@
+/* === BASE STYLES === */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f0f8ff;
   margin: 0;
   padding: 0;
@@ -10,6 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .header {
@@ -17,11 +19,13 @@ body {
   padding: 10px 0;
   width: 100%;
   text-align: center;
+  animation: slideDown 0.6s ease-out;
 }
 
+/* === PARKING LOT === */
 .parking-lot {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin: 40px 0;
 }
@@ -30,6 +34,12 @@ body {
   position: relative;
   width: 160px;
   height: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.parking-slot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .slot {
@@ -43,6 +53,7 @@ body {
   border-radius: 8px;
   font-size: 30px;
   position: relative;
+  transition: background-color 0.3s ease;
 }
 
 .slot-id {
@@ -64,17 +75,21 @@ body {
 
 .car-icon {
   font-size: 24px;
+  animation: popIn 0.4s ease;
 }
 
 .entrance {
   text-align: center;
   margin: 20px 0;
+  animation: fadeIn 0.6s ease;
 }
 
 .entrance-icon {
   font-size: 40px;
+  animation: bounce 1s infinite;
 }
 
+/* === LEGEND === */
 .legend {
   display: flex;
   justify-content: center;
@@ -87,6 +102,11 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.legend-item:hover {
+  transform: scale(1.05);
 }
 
 .legend-color {
@@ -96,13 +116,19 @@ body {
   border: 1px solid #ccc;
 }
 
+/* === RATING === */
 .rating {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  transition: transform 0.2s ease;
 }
 
+.rating span:hover {
+  transform: scale(1.2);
+}
 
+/* === BUTTONS === */
 .footer {
   display: flex;
   justify-content: center;
@@ -110,22 +136,32 @@ body {
   width: auto;
 }
 
-
 .slot-button,
-.feedback-button {
+.feedback-button,
+.submit-feedback {
   background-color: #87ceeb;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .slot-button:hover,
-.feedback-button:hover {
+.feedback-button:hover,
+.submit-feedback:hover {
   background-color: #68a7d8;
+  transform: scale(1.05);
 }
 
+.slot-button:active,
+.feedback-button:active,
+.submit-feedback:active {
+  transform: scale(0.95);
+}
+
+/* === FEEDBACK CARD === */
 .feedback-card {
   background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -133,6 +169,7 @@ body {
   padding: 15px 20px;
   margin-bottom: 15px;
   transition: box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
 .feedback-card:hover {
@@ -157,7 +194,7 @@ body {
   font-style: italic;
 }
 
-
+/* === TABS === */
 .tab-buttons {
   display: flex;
   justify-content: center;
@@ -172,10 +209,117 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .tab-buttons button.active-tab {
   background-color: #68a7d8;
   font-weight: bold;
+}
+
+.tab-buttons button:hover {
+  background-color: #5f9fcb;
+}
+
+.feedback-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+  color: #333;
+}
+
+.feedback-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.feedback-textarea:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 8px #4caf50aa;
+  background-color: #fff;
+}
+
+/* === TRANSITION CLASSES for CSSTransition === */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* === KEYFRAMES === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
